@@ -1,5 +1,5 @@
-import {chooseEvent,EVENT_PROFILES} from './events.js?v=12';
-import {PACE} from './pace.js?v=12';
+import {chooseEvent,EVENT_PROFILES} from './events.js?v=122';
+import {PACE} from './pace.js?v=122';
 // Synthetic market state is independent of fills, so trading cannot reroll prices.
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export class Market {

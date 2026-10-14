@@ -35,7 +35,7 @@ try {
         throw '文件不完整。请先解压整个便携包，再运行解压目录中的Start-Game.cmd。'
     }
     New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
-    Write-Status 'YEN FX LAB：正在启动，请稍候……'
+    Write-Status '久留美模拟器：正在启动，请稍候……'
     $nodePath = Join-Path $gameRoot 'runtime/node.exe'
     if (!(Test-Path -LiteralPath $nodePath)) {
         $nodeCommand = Get-Command node -ErrorAction SilentlyContinue
@@ -47,7 +47,7 @@ try {
         $health = $null
         try { $health = Invoke-RestMethod "$gameUrl/_local/health" -TimeoutSec 1 } catch { }
         if ($health) {
-            if ($health.app -eq 'yen-fx-lab' -and [IO.Path]::GetFullPath($health.root) -eq (Join-Path $gameRoot 'dist')) {
+            if ($health.app -in @('kurumi-simulator','yen-fx-lab') -and [IO.Path]::GetFullPath($health.root) -eq (Join-Path $gameRoot 'dist')) {
                 @{pid=$health.pid;port=$gamePort;server=$gameServer} | ConvertTo-Json | Set-Content -LiteralPath $stateFile -Encoding UTF8
                 Write-Status '本目录游戏服务已运行，正在重新打开窗口。'
                 Open-GameWindow $gameUrl
@@ -63,7 +63,7 @@ try {
         for ($attempt = 0; $attempt -lt 30; $attempt++) {
             $health = $null
             try { $health = Invoke-RestMethod "$gameUrl/_local/health" -TimeoutSec 1 } catch { }
-            if ($health -and $health.app -eq 'yen-fx-lab' -and $health.pid -eq $gameProcess.Id) {
+            if ($health -and $health.app -in @('kurumi-simulator','yen-fx-lab') -and $health.pid -eq $gameProcess.Id) {
                 @{pid=$gameProcess.Id;port=$gamePort;server=$gameServer} | ConvertTo-Json | Set-Content -LiteralPath $stateFile -Encoding UTF8
                 Write-Status '本地服务启动成功。'
                 Open-GameWindow $gameUrl

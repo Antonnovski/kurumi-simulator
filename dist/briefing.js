@@ -1,4 +1,4 @@
-import {INSTRUMENTS} from './instruments.js?v=12';
+import {INSTRUMENTS} from './instruments.js?v=122';
 // Summaries use only already observed quotes and published news.
 export function otherBriefs(engine){return Object.entries(INSTRUMENTS).filter(([pair])=>pair!==engine.pair).map(([pair,c])=>{
  const q=engine.instrument(pair),history=q.history.filter(p=>p.time<=engine.time),recent=history.filter(p=>p.time>=engine.time-30*60000),base=history.findLast(p=>p.time<=engine.time-5*60000);

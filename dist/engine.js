@@ -1,10 +1,10 @@
-import {EventDirector} from './events.js?v=12';
-import {INSTRUMENTS,QUOTE_KEYS} from './instruments.js?v=12';
-import {newGame,gameResult} from './gameplay.js?v=12';
-import {executionCost} from './execution.js?v=12';
-import {Market} from './market.js?v=12';
-import {loanBook,accrue,debt,createLoan,creditPayment} from './loans.js?v=12';
-import {emptyStats,statsFromLogs,recordExit,report} from './settlement.js?v=12';
+import {EventDirector} from './events.js?v=122';
+import {INSTRUMENTS,QUOTE_KEYS} from './instruments.js?v=122';
+import {newGame,gameResult} from './gameplay.js?v=122';
+import {executionCost} from './execution.js?v=122';
+import {Market} from './market.js?v=122';
+import {loanBook,accrue,debt,createLoan,creditPayment} from './loans.js?v=122';
+import {emptyStats,statsFromLogs,recordExit,report} from './settlement.js?v=122';
 // All quantities are units of each instrument base currency; all money/P&L is JPY.
 export const RULES={initial:1000000,marginRate:.04,liquidationRatio:1,minUnits:1000,maxUnits:150000,maxExposure:25000000,swapLong:-18,swapShort:12};
 const money=x=>Math.round((x+Number.EPSILON)*100)/100;

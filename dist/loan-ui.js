@@ -1,4 +1,4 @@
-import {LOAN_PLANS,loanBook,createLoan} from './loans.js?v=12';
+import {LOAN_PLANS,loanBook,createLoan} from './loans.js?v=122';
 export function renderLoans(e,$,yen,clock){
  yen=x=>'¥'+x.toLocaleString('ja-JP',{minimumFractionDigits:2,maximumFractionDigits:2});
  const l=e.loans.active,ended=!!e.settlement;if(l){if(![...$('loanPlan').options].some(o=>o.value===l.key)){const option=document.createElement('option');option.value=l.key;option.textContent=`旧合同 · 每${l.period}分钟${l.rate*100}%`; $('loanPlan').append(option);}$('loanPlan').value=l.key;$('loanAmount').value=l.original;}else if(!$('loanPlan').value||!$('loanPlan').value.startsWith('rescue'))$('loanPlan').value='rescue';for(const x of $('loanForm').elements)x.disabled=ended||!!l;

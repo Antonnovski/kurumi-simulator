@@ -1,8 +1,8 @@
 @echo off
 setlocal
 chcp 65001 >nul
-title YEN FX LAB - Local Launcher
-echo YEN FX LAB - Starting local game...
+title 久留美模拟器 - Local Launcher
+echo 久留美模拟器 - Starting local game...
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Start-Game.ps1" %*
 set "GAME_EXIT=%ERRORLEVEL%"
 echo.
