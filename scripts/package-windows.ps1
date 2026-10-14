@@ -13,6 +13,6 @@ New-Item -ItemType Directory -Path $runtime -Force | Out-Null
 Copy-Item -LiteralPath $NodePath -Destination (Join-Path $runtime 'node.exe')
 $nodeVersion = (& $NodePath --version).Trim()
 Invoke-WebRequest "https://raw.githubusercontent.com/nodejs/node/$nodeVersion/LICENSE" -UseBasicParsing -OutFile (Join-Path $runtime 'LICENSE.node')
-$archive = Join-Path $outputRoot 'YEN-FX-LAB-v0.12.0-Windows-x64.zip'
+$archive = Join-Path $outputRoot 'YEN-FX-LAB-v0.12.1-Windows-x64.zip'
 Compress-Archive -LiteralPath $packageRoot -DestinationPath $archive -CompressionLevel Optimal
 Write-Output $archive
