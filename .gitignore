@@ -1,0 +1,6 @@
+runtime/
+.local/
+node_modules/
+*.zip
+*.tar.gz
+.DS_Store

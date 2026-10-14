@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {PACE,effectiveSpeed,advanceMinutes} from '../dist/pace.js';import {Engine} from '../dist/engine.js';
+test('入门保持1倍，之后3倍，用户选择慢速仍保持慢速',()=>{assert.equal(PACE.defaultSpeed,3);assert.equal(effectiveSpeed(60,9),1);assert.equal(effectiveSpeed(3,10),3);assert.equal(effectiveSpeed(1,100),1);assert.equal(effectiveSpeed(60,100),10);});
+test('小幅调节频率，不提高事件幅度模型',()=>{assert.ok(PACE.ordinaryEventChance>.0035&&PACE.ordinaryEventChance<=.005);assert.ok(PACE.varianceFloor>.000009&&PACE.varianceFloor<=.000011);});
+test('快进逐分钟执行，借款到期后立即停止，无跳过违约检查',()=>{const e=new Engine();e.place({side:'buy',units:150000});e.borrow(500000,'rescueFast');e.close(e.positions[0].id);e.balance=20000;const n=advanceMinutes(e,60);assert.equal(n,15);assert.equal(e.tick,15);assert.ok(e.settlement.loanDefault);assert.equal(advanceMinutes(e,15),0);});

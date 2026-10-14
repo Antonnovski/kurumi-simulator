@@ -1,0 +1,5 @@
+export function emptyStats(){return {entries:0,exits:0,wins:0,losses:0,flat:0,grossProfit:0,grossLoss:0,swap:0,closedUnits:0,forced:0,estimated:false};}
+export function statsFromLogs(logs){const s=emptyStats();s.estimated=logs.length>=3000;for(const l of logs){if(l.type==='建仓')s.entries++;if(l.pnl!=null)recordExit(s,l.pnl,0);if(l.swap!=null)s.swap+=l.swap;if(l.type==='强制平仓')s.forced++;}return s;}
+export function recordExit(s,pnl,units){s.exits++;s.closedUnits+=units;if(pnl>0){s.wins++;s.grossProfit+=pnl;}else if(pnl<0){s.losses++;s.grossLoss+=-pnl;}else s.flat++;}
+export function report(e){const s=e.stats,net=Math.round((e.balance-1000000)*100)/100;return {initial:1000000,final:e.balance,net,returnPct:net/1000000*100,entries:s.entries,exits:s.exits,wins:s.wins,losses:s.losses,flat:s.flat,winRate:s.exits?s.wins/s.exits*100:null,grossProfit:s.grossProfit,grossLoss:s.grossLoss,profitFactor:s.grossLoss?s.grossProfit/s.grossLoss:null,swap:s.swap,maxDrawdown:e.maxDrawdown*100,minutes:e.tick,forced:s.forced,estimated:s.estimated,finishedAt:e.time,weekend:!e.isOpen(),seed:e.seed};}
+
