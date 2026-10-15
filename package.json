@@ -1,1 +1,1 @@
-{"name":"kurumi-simulator","version":"0.14.0","type":"module","scripts":{"test":"node --test tests/*.test.js","dev":"node server.js","start":"node server.js"}}
+{"name":"kurumi-simulator","version":"1.0.0","type":"module","scripts":{"test":"node --test tests/*.test.js","dev":"node server.js","start":"node server.js","stress":"node scripts/stress-soak.mjs 3600"}}

@@ -1,0 +1,7 @@
+import {writeFile} from 'node:fs/promises';import {performance} from 'node:perf_hooks';
+const [base,pid,file,seconds]=process.argv.slice(2),url=new URL(base);if(url.protocol!=='http:'||url.hostname!=='127.0.0.1')throw Error('Only the owned loopback test server is allowed');
+const health=await(await fetch(base+'/_local/health')).json();if(health.app!=='kurumi-simulator'||health.pid!==Number(pid))throw Error('Test server identity mismatch');
+const start=performance.now(),end=start+Number(seconds)*1000,state={startedAt:new Date().toISOString(),concurrency:12,requests:0,failures:0,maxLatencyMs:0,bytes:0};
+const routes=[['/',200],['/app.js?v=1000',200],['/save-codec.js',200],['/fx-model.js',200],['/no-such-asset',404],['/%2e%2e%2fpackage.json',403]];
+while(performance.now()<end){await Promise.all(Array.from({length:12},async(_,i)=>{const [route,expected]=routes[i%routes.length],t=performance.now();try{const r=await fetch(base+route,{signal:AbortSignal.timeout(10000)}),body=await r.arrayBuffer();state.requests++;state.bytes+=body.byteLength;state.maxLatencyMs=Math.max(state.maxLatencyMs,performance.now()-t);if(r.status!==expected)throw Error('HTTP '+r.status);}catch(error){state.failures++;state.lastError=error.message;}}));state.elapsedSeconds=(performance.now()-start)/1000;state.rss=process.memoryUsage().rss;await writeFile(file,JSON.stringify(state));await new Promise(r=>setTimeout(r,200));}
+state.finishedAt=new Date().toISOString();await writeFile(file,JSON.stringify(state));console.log(JSON.stringify(state));

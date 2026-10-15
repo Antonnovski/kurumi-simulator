@@ -1,9 +1,9 @@
-import {chartWindow} from './history-view.js?v=140';
-import {candlesFromQuotes} from './candles.js?v=140';
+import {chartWindow} from './history-view.js?v=1000';
+import {candlesFromQuotes} from './candles.js?v=1000';
 export function drawChart(canvas,engine,view,period,offset=0){
  const r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=r.width*dpr;canvas.height=r.height*dpr;
  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const w=r.width,h=r.height,left=18,right=75,top=30,bottom=35;
- const all=candlesFromQuotes(engine.history,period),win=chartWindow(all.length,offset),bars=all.slice(win.start,win.end),points=engine.curve.slice(-240),series=view==='price'?bars:points;
+ const all=candlesFromQuotes(engine.history,period,{continuous:engine.isRealtime()}),win=chartWindow(all.length,offset),bars=all.slice(win.start,win.end),points=engine.curve.slice(-240),series=view==='price'?bars:points;
  if(!series.length){ctx.fillStyle='#7f90a5';ctx.font='12px sans-serif';ctx.fillText('等待开市报价生成 K 线',left,50);return{caption:'暂无开市报价',ohlc:'—'};}
  const lows=view==='price'?bars.map(b=>b.low):points.map(p=>p.equity),highs=view==='price'?bars.map(b=>b.high):points.map(p=>p.equity);
  let lo=Math.min(...lows),hi=Math.max(...highs),pad=Math.max((hi-lo)*.15,view==='price'?.035:100);lo-=pad;hi+=pad;
