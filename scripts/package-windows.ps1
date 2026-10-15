@@ -13,6 +13,6 @@ New-Item -ItemType Directory -Path $runtime -Force | Out-Null
 Copy-Item -LiteralPath $NodePath -Destination (Join-Path $runtime 'node.exe')
 $nodeVersion = (& $NodePath --version).Trim()
 Invoke-WebRequest "https://raw.githubusercontent.com/nodejs/node/$nodeVersion/LICENSE" -UseBasicParsing -OutFile (Join-Path $runtime 'LICENSE.node')
-$archive = Join-Path $outputRoot '久留美模拟器-v0.12.2-Windows-x64.zip'
+$archive = Join-Path $outputRoot '久留美模拟器-v0.13.0-Windows-x64.zip'
 Compress-Archive -LiteralPath $packageRoot -DestinationPath $archive -CompressionLevel Optimal
 Write-Output $archive

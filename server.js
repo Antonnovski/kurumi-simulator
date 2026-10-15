@@ -8,7 +8,7 @@ export function createServer(){let pageViews=0;return http.createServer(async(re
  res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Cache-Control','no-store');
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{Allow:'GET, HEAD'});return res.end('Method not allowed');}
  try{const name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
- if(name==='/_local/health'){res.setHeader('Content-Type','application/json; charset=utf-8');return res.end(req.method==='HEAD'?'':JSON.stringify({app:'kurumi-simulator',name:'久留美模拟器',version:'0.12.2',pid:process.pid,root,pageViews}));}
+ if(name==='/_local/health'){res.setHeader('Content-Type','application/json; charset=utf-8');return res.end(req.method==='HEAD'?'':JSON.stringify({app:'kurumi-simulator',name:'久留美模拟器',version:'0.13.0',pid:process.pid,root,pageViews}));}
  const file=path.resolve(root,'.'+(name==='/'?'/index.html':name)),relative=path.relative(root,file);
  if(relative.startsWith('..')||path.isAbsolute(relative)||relative.split(path.sep).some(part=>part.startsWith('.'))){res.writeHead(403);return res.end('Forbidden');}
  const data=await readFile(file);if(name==='/'&&req.method==='GET')pageViews++;const mime=types[path.extname(file)]??'application/octet-stream';res.setHeader('Content-Type',mime+(mime.startsWith('text/')?'; charset=utf-8':''));res.end(req.method==='HEAD'?undefined:data);
