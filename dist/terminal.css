@@ -7,3 +7,5 @@ header{height:58px;padding:0 24px}.brand{font-size:23px}nav{gap:18px}main{max-wi
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 .chart-switcher{padding:12px 16px 0;border-bottom:1px solid var(--line);background:#0e1723}.chart-switcher>small{display:block;color:#8ca6bd;font-size:10px;margin-bottom:8px}.chart-switcher .watchlist{margin-bottom:12px;gap:6px}.chart-switcher .watchlist button{padding:9px 6px;font-size:10px}.round-mode select{font-size:11px}.playback>div{flex-wrap:wrap}.round-mode #roundClock{font-variant-numeric:tabular-nums;color:#9ee6cc}@media(max-width:760px){.chart-switcher{padding:10px 12px 0}.playback>div{grid-template-columns:repeat(3,1fr)}#skipClosed{grid-column:span 2}}
+
+.currency-profile{padding:0 18px 10px;color:#9db5ca;font-size:11px;line-height:1.65;border-bottom:1px solid #263747}

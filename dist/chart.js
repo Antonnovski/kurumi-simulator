@@ -1,5 +1,5 @@
-import {chartWindow} from './history-view.js?v=130';
-import {candlesFromQuotes} from './candles.js?v=130';
+import {chartWindow} from './history-view.js?v=140';
+import {candlesFromQuotes} from './candles.js?v=140';
 export function drawChart(canvas,engine,view,period,offset=0){
  const r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=r.width*dpr;canvas.height=r.height*dpr;
  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const w=r.width,h=r.height,left=18,right=75,top=30,bottom=35;
