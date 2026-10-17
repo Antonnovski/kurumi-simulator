@@ -1,8 +1,9 @@
-import {FX_PROFILES} from './fx-model.js?v=1000';
-import {INSTRUMENTS} from './instruments.js?v=1000';
+import {quoteStart} from './history-view.js?v=100101';
+import {FX_PROFILES} from './fx-model.js?v=100101';
+import {INSTRUMENTS} from './instruments.js?v=100101';
 // Summaries use only already observed quotes and published news.
 export function otherBriefs(engine){return Object.entries(INSTRUMENTS).filter(([pair])=>pair!==engine.pair).map(([pair,c])=>{
- const q=engine.instrument(pair),history=q.history.filter(p=>p.time<=engine.time),recent=history.filter(p=>p.time>=engine.time-30*60000),base=history.findLast(p=>p.time<=engine.time-5*60000);
+ const q=engine.instrument(pair),end=quoteStart(q.history,engine.time+1),start=quoteStart(q.history,engine.time-30*60000),recent=q.history.slice(start,end),baseIndex=quoteStart(q.history,engine.time-5*60000+1)-1,base=baseIndex>=0?q.history[baseIndex]:null;
  const positions=engine.positions.filter(p=>(p.pair??'USDJPY')===pair),orders=engine.orders.filter(p=>(p.pair??'USDJPY')===pair);
  const news=q.market.news.find(n=>n.publishedAt<=engine.time),change5=base?(q.mid/base.mid-1)*100:null;
  return {pair,label:c.label,base:c.base,mid:q.mid,change5,spread:q.spread/.01,low:recent.length?Math.min(...recent.map(p=>p.mid)):q.mid,high:recent.length?Math.max(...recent.map(p=>p.mid)):q.mid,

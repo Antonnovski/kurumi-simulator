@@ -1,6 +1,6 @@
-import {chooseEvent,EVENT_PROFILES} from './events.js?v=1000';
-import {PACE} from './pace.js?v=1000';
-import {FX_PROFILES,FxFactors,fxSession,factorReturn} from './fx-model.js?v=1000';
+import {chooseEvent,EVENT_PROFILES} from './events.js?v=100101';
+import {PACE} from './pace.js?v=100101';
+import {FX_PROFILES,FxFactors,fxSession,factorReturn} from './fx-model.js?v=100101';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 // The market and common factors never read account balances, fills or positions.
 export class Market{

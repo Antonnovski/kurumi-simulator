@@ -1,0 +1,32 @@
+/* Keep price, account and order context visible without covering the chart. */
+.terminal-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 10px;color:#b6c9dc;font-size:12px}
+.terminal-tools>span{font-weight:600}.terminal-tools small{font-weight:400;color:var(--muted);margin-left:10px;font-size:10px}
+.terminal-tools>div{display:flex;gap:6px}.terminal-tools button{font-size:11px;padding:7px 10px}
+#focusTerminal[aria-pressed=true]{color:var(--green);border-color:#467b68;background:#64e7b012}
+.intro{margin-bottom:8px}.intro h1{font-size:20px;margin:3px 0}.intro .eyebrow,.intro p{display:none}
+.game-bar{grid-template-columns:240px minmax(0,1fr) 150px;gap:16px;padding:10px 14px}.round-mode .eyebrow{display:none}
+.round-mode select{margin:0 0 4px}.mission strong{font-size:13px;margin-bottom:3px}.mission small{font-size:10px}.score strong{font-size:23px;margin:1px 0}
+.challenge-strip{padding:7px 12px;gap:6px 12px;margin-bottom:10px}.challenge-strip small{font-size:9px;width:auto}
+.challenge-strip label{display:flex;align-items:center;gap:6px;white-space:nowrap}.challenge-strip input{width:auto;margin:0}
+.metrics{margin-bottom:10px}.metrics>div{padding:10px 12px}.metrics strong{font-variant-numeric:tabular-nums;font-size:21px;margin:4px 0}
+.briefing{position:static;backdrop-filter:none;box-shadow:none;margin-bottom:10px}.brief-heading{padding:7px 12px}.brief-heading>div{display:flex;align-items:center;gap:8px}.brief-heading small{margin-left:0}
+.brief-card{padding:8px 12px}.brief-card svg{height:23px;margin:3px 0}.brief-character,.brief-range,.brief-holding,.brief-news{font-size:9px}
+.brief-quote strong{font-size:18px}.brief-quote{margin-top:4px}
+.chart-switcher{padding:9px 12px 0}.chart-switcher>small{display:none}.chart-switcher .watchlist{margin-bottom:9px}
+.currency-profile{font-size:10px;padding-bottom:7px}.quotes{padding-top:10px}.pace-status{padding-bottom:6px}
+.chart-panel,.trade-rail{min-width:0}#watchlist{scroll-margin-top:64px}#orderForm{scroll-margin-top:90px}
+.ticket h2{display:flex;align-items:center;gap:8px}.ticket h2 small{color:var(--muted);font-size:10px;font-weight:400}
+.ledger-pager{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 12px;border-top:1px solid var(--line);color:var(--muted)}.ledger-pager button{font-size:10px;padding:6px 8px}.ledger-pager small{font-size:10px}
+.focus-mode .intro,.focus-mode .mission,.focus-mode .score,.focus-mode .challenge-strip,.focus-mode #coachPanel{display:none}
+.focus-mode .game-bar{display:block;background:#101c28}.focus-mode .round-mode{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.focus-mode .round-mode select{width:270px;margin:0}.focus-mode #roundProgress{width:120px;margin:0}
+.focus-mode .brief-card svg,.focus-mode .brief-range,.focus-mode .brief-character,.focus-mode .brief-news{display:none}
+.focus-mode .brief-heading small{display:none}.focus-mode .brief-card{padding:7px 12px}
+.focus-mode .brief-heading,.focus-mode .brief-state,.focus-mode .currency-profile{display:none}
+.focus-mode .brief-card{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4px 8px}.focus-mode .brief-quote{margin:0;justify-content:flex-end}.focus-mode .brief-holding{grid-column:1/-1}
+.focus-mode .terminal-tools{margin-top:0}.focus-mode .game-bar{padding:7px 12px}.focus-mode .metrics>div{padding-top:8px;padding-bottom:8px}.focus-mode .metrics small{display:none}.focus-mode .metrics #return{display:block}.focus-mode .quotes strong{font-size:26px}
+@media(min-width:1101px){.workspace{grid-template-columns:minmax(0,1fr) 360px}.trade-rail{position:sticky;top:60px;max-height:calc(100dvh - 80px);overflow:auto;scrollbar-width:thin;padding-bottom:2px}.trade-rail>.panel{flex-shrink:0}.canvas-wrap{height:clamp(320px,43vh,510px)}.trade-rail #ledgerContent{max-height:210px}}
+@media(min-width:1550px){.workspace{grid-template-columns:minmax(0,1fr) 390px}}
+@media(min-width:761px) and (max-width:1100px){.game-bar{grid-template-columns:210px minmax(0,1fr) 95px;gap:10px}.score{grid-column:auto;display:block;border-left:1px solid var(--line);padding-left:12px}.score small:last-child{display:none}.score strong{font-size:19px}.brief-heading small{font-size:9px}.metrics strong{font-size:19px}}
+@media(max-width:760px){.terminal-tools{gap:6px;font-size:11px}.terminal-tools small{display:none}.terminal-tools>div{gap:4px}.terminal-tools button{padding:8px 7px;font-size:10px}.intro{align-items:center}.intro h1{font-size:17px}.session small{display:none}.game-bar{grid-template-columns:1fr;padding:10px;gap:8px}.round-mode{grid-template-columns:1fr}.round-mode select{grid-column:1;grid-row:auto;width:100%;margin:0}.round-mode small{font-size:10px}.mission{border-top:1px solid var(--line);padding-top:8px}.mission span{margin-top:3px}.score{display:none}.challenge-strip small{width:100%;line-height:1.5}.metrics>div{min-width:0;padding:8px 10px}.metrics strong{font-size:19px}.metrics>div:first-child strong{font-size:24px}.brief-heading>div{display:block}.brief-heading small{display:none}.brief-card{padding:7px 8px}.brief-quote strong{font-size:15px}.brief-state{display:none}.briefing .brief-character,.briefing .brief-news{display:none}.brief-quote span{font-size:9px}.canvas-wrap{height:300px}.chart-switcher .watchlist button{font-size:10px}.focus-mode .round-mode select{width:100%}.focus-mode .round-mode{gap:5px}.focus-mode #roundProgress{width:100%}.focus-mode .brief-holding{display:none}.ticket .submit{min-height:42px}.trade-rail{gap:10px}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none!important}}

@@ -1,11 +1,11 @@
-import {FxFactors} from './fx-model.js?v=1000';
-import {EventDirector} from './events.js?v=1000';
-import {INSTRUMENTS,QUOTE_KEYS} from './instruments.js?v=1000';
-import {newGame,gameResult} from './gameplay.js?v=1000';
-import {executionCost} from './execution.js?v=1000';
-import {Market} from './market.js?v=1000';
-import {loanBook,accrue,debt,createLoan,creditPayment} from './loans.js?v=1000';
-import {emptyStats,statsFromLogs,recordExit,report} from './settlement.js?v=1000';
+import {FxFactors} from './fx-model.js?v=100101';
+import {EventDirector} from './events.js?v=100101';
+import {INSTRUMENTS,QUOTE_KEYS} from './instruments.js?v=100101';
+import {newGame,gameResult} from './gameplay.js?v=100101';
+import {executionCost} from './execution.js?v=100101';
+import {Market} from './market.js?v=100101';
+import {loanBook,accrue,debt,createLoan,creditPayment} from './loans.js?v=100101';
+import {emptyStats,statsFromLogs,recordExit,report} from './settlement.js?v=100101';
 // All quantities are units of each instrument base currency; all money/P&L is JPY.
 export const RULES={initial:1000000,marginRate:.04,liquidationRatio:1,minUnits:1000,maxUnits:150000,maxExposure:25000000,swapLong:-18,swapShort:12};
 const money=x=>Math.round((x+Number.EPSILON)*100)/100;
